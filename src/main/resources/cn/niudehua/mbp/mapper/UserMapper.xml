@@ -3,7 +3,7 @@
 <mapper namespace="cn.niudehua.mbp.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="cn.niudehua.mbp.entity.User">
     <!--@mbg.generated-->
-    <!--@Table `user`-->
+    <!--@Table mbp_user-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="age" jdbcType="INTEGER" property="age" />
@@ -13,6 +13,6 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, age, email, manager_id, create_time
+    user_id, `name`, age, email, manager_id, create_time
   </sql>
 </mapper>

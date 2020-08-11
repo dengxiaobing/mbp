@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
  * @datetime: 2020/8/11 11:08 下午
  */
 @Data
-@TableName(value = "`user`")
+@TableName(value = "`mbp_user`")
 public class User {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.INPUT)
+    @TableId(value = "user_id")
     private Long id;
 
     /**
@@ -58,6 +58,14 @@ public class User {
      * 排除非表字段方法2
      */
     private static String remark2;
+
+    public static String getRemark2() {
+        return remark2;
+    }
+
+    public static void setRemark2(String remark2) {
+        User.remark2 = remark2;
+    }
 
     /**
      * 排除非表段方法3 推荐
