@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mbp?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: a19920213
+#logging:
+#  level: trace
+##    root: warn
+##    cn.niudehua.mbp.mapper: trace
+#  pattern:
+#    console: '%p%m%n'
