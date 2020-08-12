@@ -1,6 +1,6 @@
 package cn.niudehua.mbp.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.SqlCondition;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -13,24 +13,24 @@ import java.time.LocalDateTime;
  * @datetime: 2020/8/11 11:08 下午
  */
 @Data
-@TableName(value = "`mbp_user`")
+@TableName(value = "`user`")
 public class User {
     /**
      * 主键
      */
-    @TableId(value = "user_id")
+    @TableId(value = "id")
     private Long id;
 
     /**
      * 姓名
      */
-    @TableField(value = "name")
+    @TableField(value = "name", condition = SqlCondition.LIKE)
     private String name;
 
     /**
      * 年龄
      */
-    @TableField(value = "age")
+    @TableField(value = "age",condition = "%s&lt;#{%s}")
     private Integer age;
 
     /**
@@ -50,28 +50,7 @@ public class User {
      */
     @TableField(value = "create_time")
     private LocalDateTime createTime;
-    /**
-     * 排除非表字段方法1
-     */
-    private transient String remark1;
-    /**
-     * 排除非表字段方法2
-     */
-    private static String remark2;
 
-    public static String getRemark2() {
-        return remark2;
-    }
-
-    public static void setRemark2(String remark2) {
-        User.remark2 = remark2;
-    }
-
-    /**
-     * 排除非表段方法3 推荐
-     */
-    @TableField(exist = false)
-    private  String remark3;
 
 
     public static final String COL_ID = "id";
