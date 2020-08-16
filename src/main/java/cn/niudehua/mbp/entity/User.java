@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.annotation.SqlCondition;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +16,10 @@ import java.time.LocalDateTime;
  * @datetime: 2020/8/11 11:08 下午
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "`user`")
+@Builder
 public class User {
     /**
      * 主键
@@ -30,7 +36,7 @@ public class User {
     /**
      * 年龄
      */
-    @TableField(value = "age",condition = "%s&lt;#{%s}")
+    @TableField(value = "age", condition = "%s&lt;#{%s}")
     private Integer age;
 
     /**
@@ -50,7 +56,6 @@ public class User {
      */
     @TableField(value = "create_time")
     private LocalDateTime createTime;
-
 
 
     public static final String COL_ID = "id";

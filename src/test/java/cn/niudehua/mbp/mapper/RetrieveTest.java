@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +30,7 @@ import java.util.Map;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Slf4j
-public class UserMapperTest {
+public class RetrieveTest {
     @Autowired
     UserMapper userMapper;
 
@@ -40,19 +39,6 @@ public class UserMapperTest {
         List<User> users = userMapper.selectList(null);
 //        Assert.assertEquals(5, users.size());
         users.forEach(user -> log.info("==>user:{}", user));
-    }
-
-    @Test
-    public void insert() {
-        User user = new User();
-        user.setName("向北");
-        user.setAge(26);
-        user.setEmail("xb@baomidou.com");
-        user.setManagerId(1088248166370832385L);
-        user.setCreateTime(LocalDateTime.now());
-        int insert = userMapper.insert(user);
-        Assert.assertEquals(1, insert);
-        log.info("影响记录数{}", insert);
     }
 
     @Test
@@ -371,7 +357,7 @@ public class UserMapperTest {
 
     @Test
     public void selectLambda4() {
-        LambdaQueryChainWrapper<User> lambdaQueryChainWrapper = new LambdaQueryChainWrapper<User>(userMapper);
+        LambdaQueryChainWrapper<User> lambdaQueryChainWrapper = new LambdaQueryChainWrapper<>(userMapper);
         List<User> users = lambdaQueryChainWrapper.like(User::getName, "雨").gt(User::getAge, 20).list();
         Assert.assertNotNull(users);
         users.forEach(user -> log.info("==>user:{}", user));
@@ -403,7 +389,7 @@ public class UserMapperTest {
         LambdaQueryWrapper<User> lambdaQuery = Wrappers.lambdaQuery();
         lambdaQuery.like(User::getName, "王").or(lq -> lq.lt(User::getAge, 40));
         // 不查询总记录数
-        IPage<Map<String, Object>> page = new Page<>(1, 2,false);
+        IPage<Map<String, Object>> page = new Page<>(1, 2, false);
 //        IPage<Map<String, Object>> page = new Page<>(1, 2);
         IPage<Map<String, Object>> mapIPage = userMapper.selectMapsPage(page, lambdaQuery);
         Assert.assertNotNull(mapIPage);
