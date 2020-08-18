@@ -8,7 +8,7 @@ spring:
 logging:
   level:
     root: warn
-    cn.niudehua.mbp.mapper: trace
+    cn.niudehua.mbp: trace
   pattern:
     console: '%p%m%n'
 

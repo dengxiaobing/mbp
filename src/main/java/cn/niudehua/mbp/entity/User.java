@@ -1,12 +1,15 @@
 package cn.niudehua.mbp.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.SqlCondition;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -15,16 +18,17 @@ import java.time.LocalDateTime;
  * @author: deng
  * @datetime: 2020/8/11 11:08 下午
  */
+@TableName(value = "`user`")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "`user`")
-@Builder
-public class User {
+@EqualsAndHashCode(callSuper = true)
+public class User extends Model<User> {
     /**
      * 主键
      */
-    @TableId(value = "id")
+    @TableId(value = "id",type = IdType.NONE)
     private Long id;
 
     /**
