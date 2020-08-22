@@ -10,7 +10,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -19,16 +22,17 @@ import java.time.LocalDateTime;
  * @datetime: 2020/8/11 11:08 下午
  */
 @TableName(value = "`user`")
-@Data
 @Builder
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class User extends Model<User> {
     /**
      * 主键
      */
-    @TableId(value = "id",type = IdType.NONE)
+    @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
     /**
