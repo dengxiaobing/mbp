@@ -336,14 +336,14 @@ public class RetrieveTest {
     @Test
     public void selectLambda2() {
         LambdaQueryWrapper<User> lambdaQuery = Wrappers.lambdaQuery();
-        lambdaQuery.likeRight(User::getName, "王").or(lambdaQueryWrapper -> lambdaQueryWrapper.between(User::getAge, 20, 40).isNotNull(User::getEmail));
+        lambdaQuery.likeRight(User::getName, "王").or(lambdaQueryWrapper -> lambdaQueryWrapper.lt(User::getAge, 40).gt(User::getAge, 20).isNotNull(User::getEmail));
         List<User> users = userMapper.selectList(lambdaQuery);
         Assert.assertNotNull(users);
         users.forEach(user -> log.info("==>user:{}", user));
     }
 
     /**
-     * 名字为王姓或者（年龄小于40并且年龄大于20并且邮箱不为空）
+     * 名字为王姓并且（年龄小于40或者邮箱不为空）
      * name like '王%' and (age<40  or email is not null)
      */
     @Test
