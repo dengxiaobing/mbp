@@ -36,8 +36,8 @@ public class ServiceTest {
     @Test
     public void getOne() {
         LambdaQueryWrapper<User> queryWrapper = Wrappers.lambdaQuery();
-//        User user = userService.getOne(queryWrapper.gt(User::getAge, 25));
-        User user = userService.getOne(queryWrapper.gt(User::getAge, 25), false);
+        User user = userService.getOne(queryWrapper.gt(User::getAge, 25));
+//        User user = userService.getOne(queryWrapper.gt(User::getAge, 25), false);
         log.info("==>user:{}", user);
         Assert.assertNotNull(user);
     }
@@ -87,5 +87,10 @@ public class ServiceTest {
         boolean remove = userService.lambdaUpdate().like(User::getName, "老").remove();
         log.info("==>remove:{}", remove);
         Assert.assertTrue(remove);
+    }
+
+    @Test
+    public void testTransactional() {
+        userService.test1();
     }
 }

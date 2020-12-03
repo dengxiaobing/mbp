@@ -8,5 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User>{
 
+        void test1();
 
+        void test2();
 }
